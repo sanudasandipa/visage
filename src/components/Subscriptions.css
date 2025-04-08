@@ -1,0 +1,167 @@
+.subscriptions-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.subscriptions-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.subscriptions-section .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.subscription-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  height: 100%;
+}
+
+.subscription-card.popular {
+  transform: scale(1.05);
+  border: 2px solid #007bff;
+}
+
+.popular-badge {
+  position: absolute;
+  top: 20px;
+  right: -35px;
+  background: #007bff;
+  color: white;
+  padding: 8px 40px;
+  transform: rotate(45deg);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.subscription-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.price {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.currency {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  vertical-align: top;
+}
+
+.amount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #007bff;
+  margin: 0 5px;
+}
+
+.period {
+  font-size: 1rem;
+  color: #666;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.features-list li {
+  padding: 10px 0;
+  color: #666;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.subscribe-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #007bff, #00bfff);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribe-btn.contact-btn {
+  background: linear-gradient(45deg,  #007bff, #00bfff);
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.subscribe-btn.contact-btn:hover {
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* QR Modal Styles */
+.qr-modal .modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.qr-modal .modal-header {
+  border-bottom: 1px solid #eee;
+  padding: 1.5rem;
+}
+
+.qr-modal .modal-title {
+  font-weight: 600;
+  color: #333;
+}
+
+.qr-modal .modal-body {
+  padding: 2rem;
+}
+
+.qr-code-image {
+  max-width: 200px;
+  margin: 1.5rem auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.qr-modal p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  .subscription-card.popular {
+    transform: scale(1);
+  }
+  
+  .subscriptions-section {
+    padding: 60px 0;
+  }
+  
+  .subscriptions-section h2 {
+    font-size: 2rem;
+  }
+} 
