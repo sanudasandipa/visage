@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 import logo from '../images/logo.png';
+import LoginModal from './LoginModal';
 
 const NavigationBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,72 +54,78 @@ const NavigationBar = () => {
   };
 
   return (
-    <Navbar 
-      expand="lg"
-      fixed="top"
-      className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
-    >
-      <Container>
-        <Navbar.Brand as={Link} to="/" onClick={() => scrollToSection('home')}>
-          <img src={logo} alt="Visage Logo" height="40" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link 
-              onClick={() => scrollToSection('home')} 
-              className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('about')} 
-              className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
-            >
-              About
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('subscriptions')} 
-              className={`nav-link ${activeSection === 'subscriptions' ? 'active' : ''}`}
-            >
-              Subscriptions
-            </Nav.Link>
-            <Nav.Link 
-              onClick={() => scrollToSection('contact')} 
-              className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-            >
-              Contact
-            </Nav.Link>
-          </Nav>
-          <AnimatePresence>
-            <motion.div 
-              className="auth-buttons"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Link to="/login" className="text-decoration-none">
+    <>
+      <Navbar 
+        expand="lg"
+        fixed="top"
+        className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
+      >
+        <Container>
+          <Navbar.Brand as={Link} to="/" onClick={() => scrollToSection('home')}>
+            <img src={logo} alt="Visage Logo" height="40" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto">
+              <Nav.Link 
+                onClick={() => scrollToSection('home')} 
+                className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('about')} 
+                className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+              >
+                About
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('subscriptions')} 
+                className={`nav-link ${activeSection === 'subscriptions' ? 'active' : ''}`}
+              >
+                Subscriptions
+              </Nav.Link>
+              <Nav.Link 
+                onClick={() => scrollToSection('contact')} 
+                className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+              >
+                Contact
+              </Nav.Link>
+            </Nav>
+            <AnimatePresence>
+              <motion.div 
+                className="auth-buttons"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Button 
                   variant="outline-light" 
                   className="login-btn"
+                  onClick={() => setShowLoginModal(true)}
                 >
                   Login
                 </Button>
-              </Link>
-              <Link to="/signup" className="text-decoration-none">
-                <Button 
-                  variant="primary" 
-                  className="signup-btn"
-                >
-                  Sign Up
-                </Button>
-              </Link>
-            </motion.div>
-          </AnimatePresence>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+                <Link to="/signup" className="text-decoration-none">
+                  <Button 
+                    variant="primary" 
+                    className="signup-btn"
+                  >
+                    Sign Up
+                  </Button>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <LoginModal 
+        show={showLoginModal}
+        onHide={() => setShowLoginModal(false)}
+      />
+    </>
   );
 };
 
-export default NavigationBar; 
+export default NavigationBar;

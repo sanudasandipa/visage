@@ -105,7 +105,7 @@ const Footer = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                   </svg>
-                  123 Business Street, New York, NY 10001
+                  148/15, Lesley Ranagala Mawatha, Baseline Road, Colombo 08, Sri Lanka. 
                 </li>
                 <li>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
