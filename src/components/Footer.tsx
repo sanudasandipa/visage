@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import './Footer.css';
 import logo from '../images/logo.png';
 import footerImage1 from '../images/foterimage1.png';
-import footerImage2 from '../images/foterimage2.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -61,7 +60,6 @@ const Footer = () => {
                 className="footer-images"
               >
                 <img src={footerImage1} alt="Footer decoration 1" className="footer-image" />
-                <img src={footerImage2} alt="Footer decoration 2" className="footer-image" />
               </motion.div>
             </Col>
           </Row>
@@ -147,4 +145,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

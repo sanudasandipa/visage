@@ -118,6 +118,29 @@
   color: #007bff;
 }
 
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: #007bff;
+  transform: translateY(-3px);
+}
+
 @media (max-width: 991px) {
   .footer {
     padding-top: 3rem;
@@ -148,4 +171,4 @@
   .copyright {
     text-align: center;
   }
-} 
+}
