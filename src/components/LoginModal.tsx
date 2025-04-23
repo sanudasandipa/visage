@@ -83,7 +83,7 @@ const LoginModal = ({ show, onHide }: LoginModalProps) => {
           </Button>
         </Form>
         <div className="text-center mt-3">
-          <a href="#" className="text-primary">Forgot password?</a>
+          <a href="#forhotpassword" className="text-primary">Forgot password?</a>
         </div>
       </Modal.Body>
     </Modal>
