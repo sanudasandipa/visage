@@ -95,7 +95,6 @@
 
 .auth-buttons {
   display: flex;
-  gap: 1rem;
   align-items: center;
 }
 
@@ -209,7 +208,7 @@
     color: #007bff !important;
   }
 
-  .login-btn, .signup-btn {
+  .login-btn {
     width: 100%;
     max-width: 200px;
     text-align: center;
@@ -250,7 +249,7 @@
     width: 100%;
   }
 
-  .login-btn, .signup-btn {
+  .login-btn {
     width: 100%;
     text-align: center;
   }
@@ -269,4 +268,4 @@
   .login-btn, .signup-btn {
     max-width: 100%;
   }
-} 
+}

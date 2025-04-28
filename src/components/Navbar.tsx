@@ -106,14 +106,6 @@ const NavigationBar = () => {
                 >
                   Login
                 </Button>
-                <Link to="/signup" className="text-decoration-none">
-                  <Button 
-                    variant="primary" 
-                    className="signup-btn"
-                  >
-                    Sign Up
-                  </Button>
-                </Link>
               </motion.div>
             </AnimatePresence>
           </Navbar.Collapse>
