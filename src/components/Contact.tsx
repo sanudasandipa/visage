@@ -119,7 +119,7 @@ const Contact = () => {
             >
               <div className="icon">📍</div>
               <h4>Address</h4>
-              <p>123 Business Street<br />New York, NY 10001</p>
+              <p>Sri Lanka telecome PLC<br />Lotus Road, Colombo 01</p>
             </motion.div>
           </Col>
           <Col md={4}>
