@@ -10,13 +10,13 @@ import Subscriptions from './components/Subscriptions';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import LoginSelection from './components/LoginSelection';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavigationBar />
-        <Routes>
+        <NavigationBar />        <Routes>
           <Route path="/" element={
             <>
               <Hero />
@@ -24,6 +24,11 @@ function App() {
               <About />
               <Subscriptions />
               <Contact />
+            </>
+          } />
+          <Route path="/login" element={
+            <>
+              <LoginSelection />
             </>
           } />
           {/* Add other routes as needed */}

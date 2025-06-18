@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 import logo from '../images/logo.png';
-import LoginModal from './LoginModal';
 
 const NavigationBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [showLoginModal, setShowLoginModal] = useState(false);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       // Update navbar appearance on scroll
@@ -19,49 +18,75 @@ const NavigationBar = () => {
         setScrolled(isScrolled);
       }
 
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'subscriptions', 'contact'];
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+      // Update active section based on scroll position (only on home page)
+      if (location.pathname === '/') {
+        const sections = ['home', 'about', 'subscriptions', 'contact'];
+        const currentSection = sections.find(section => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 100 && rect.bottom >= 100;
+          }
+          return false;
+        });
+        
+        if (currentSection) {
+          setActiveSection(currentSection);
         }
-        return false;
-      });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, [scrolled, location.pathname]);const scrollToSection = (sectionId: string) => {
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const navbarHeight = document.querySelector('.custom-navbar')?.clientHeight || 0;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const navbarHeight = document.querySelector('.custom-navbar')?.clientHeight || 0;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = document.querySelector('.custom-navbar')?.clientHeight || 0;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };  const handleLoginClick = () => {
+    if (location.pathname === '/login') {
+      // If we're on login page, go back to home
+      navigate('/');
+    } else {
+      // Navigate to the login selection page
+      navigate('/login');
     }
   };
-
   return (
     <>
       <Navbar 
         expand="lg"
         fixed="top"
-        className={`custom-navbar ${scrolled ? 'scrolled' : ''}`}
-      >
-        <Container>
-          <Navbar.Brand as={Link} to="/" onClick={() => scrollToSection('home')}>
+        className={`custom-navbar ${scrolled || location.pathname !== '/' ? 'scrolled' : ''}`}
+      ><Container>
+          <Navbar.Brand as={Link} to="/">
             <img src={logo} alt="Visage Logo" height="40" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -98,24 +123,18 @@ const NavigationBar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-              >
-                <Button 
+              >                <Button 
                   variant="outline-light" 
                   className="login-btn"
-                  onClick={() => setShowLoginModal(true)}
+                  onClick={handleLoginClick}
                 >
-                  Login
+                  {location.pathname === '/login' ? 'Back to Home' : 'Login'}
                 </Button>
               </motion.div>
             </AnimatePresence>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <LoginModal 
-        show={showLoginModal}
-        onHide={() => setShowLoginModal(false)}
-      />
     </>
   );
 };

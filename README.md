@@ -8,8 +8,35 @@ A modern web application for managing employee tracking using facial recognition
 - Modern, responsive design
 - Smooth animations and transitions
 - Subscription-based pricing plans
-- User authentication
+- **Multi-tier login system with separate dashboards**
 - Interactive UI components
+
+## Login System
+
+The application now features a comprehensive login selection page that provides access to three different dashboard types:
+
+### 🔧 Site Admin Dashboard
+- **Purpose**: System administration and global management
+- **Features**: Manage settings, user permissions, and global configurations
+- **Access**: https://visage.sltdigitallab.lk/NewUI/new/site_admin/login.html
+
+### 📊 Client Dashboard  
+- **Purpose**: Individual user analytics and reports
+- **Features**: Access personal analytics, reports, and attendance data
+- **Access**: https://visage.sltdigitallab.lk/NewUI/new/login.html
+
+### 👥 Group Dashboard
+- **Purpose**: Team collaboration and group management
+- **Features**: Collaborate with team members and manage group activities
+- **Access**: https://visage.sltdigitallab.lk/NewUI/new/groups/login.html
+
+## Navigation
+
+- Click the **Login** button in the main navigation to access the login selection page
+- From the login selection page, the Login button changes to **Back to Home** 
+- The navbar automatically adapts its styling based on the current page
+- All dashboard cards include security badges and smooth animations
+- Keyboard navigation is supported (Tab to navigate, Enter/Space to select)
 
 ## Prerequisites
 
@@ -44,6 +71,7 @@ visage-app/
 │   ├── components/
 │   │   ├── Navbar.tsx
 │   │   ├── Hero.tsx
+│   │   ├── LoginSelection.tsx    # New login selection page
 │   │   └── Subscriptions.tsx
 │   ├── App.tsx
 │   └── index.tsx
